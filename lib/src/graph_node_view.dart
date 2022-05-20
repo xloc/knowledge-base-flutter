@@ -27,8 +27,8 @@ class GraphNodeView extends StatelessWidget {
               sy = box.size.height;
             }
             return Positioned(
-              left: e.value.dx - sx / 2,
-              top: e.value.dy - sy / 2,
+              left: e.value.offset.dx - sx / 2,
+              top: e.value.offset.dy - sy / 2,
               child: Draggable(
                 onDragUpdate: ((details) {
                   if (onNodeDragUpdate != null)

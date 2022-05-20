@@ -67,8 +67,16 @@ class KnowledgeBase {
   }
 }
 
+class NodeLayoutInfo {
+  Size size = const Size(0, 0);
+  Offset offset;
+  NodeLayoutInfo({required this.offset, Size? size}) {
+    if (size != null) this.size = size;
+  }
+}
+
 class KnowledgeBaseView {
-  Map<String, Offset> nodeLayout;
+  Map<String, NodeLayoutInfo> nodeLayout;
 
   KnowledgeBaseView({required this.nodeLayout});
 }

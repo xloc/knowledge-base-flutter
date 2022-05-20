@@ -53,8 +53,8 @@ class ArrowPainter extends CustomPainter {
         .toList();
 
     for (var edge in kbase.findRelatedEdges(nodes)) {
-      final from = kbaseview.nodeLayout[edge.from]!;
-      final to = kbaseview.nodeLayout[edge.to]!;
+      final from = kbaseview.nodeLayout[edge.from]!.offset;
+      final to = kbaseview.nodeLayout[edge.to]!.offset;
 
       path.moveTo(from.dx, from.dy);
       path.lineTo(to.dx, to.dy);
