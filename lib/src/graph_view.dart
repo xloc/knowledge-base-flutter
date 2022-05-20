@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:knowledge_base_flutter/src/graph_node_view.dart';
 import 'package:knowledge_base_flutter/src/knowledge_base_page.dart';
@@ -23,8 +25,51 @@ class GraphView extends StatelessWidget {
           kbase: kbase,
           onNodeDragUpdate: onNodeDragUpdate,
         ),
-        Stack()
+        CustomPaint(
+          painter: ArrowPainter(
+            kbaseview: kbaseview,
+            kbase: kbase,
+          ),
+        )
       ],
     );
+  }
+}
+
+class ArrowPainter extends CustomPainter {
+  final KnowledgeBase kbase;
+  final KnowledgeBaseView kbaseview;
+  const ArrowPainter({
+    required this.kbase,
+    required this.kbaseview,
+  });
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final path = Path();
+    final nodes = kbaseview.nodeLayout.keys
+        .map((nodeID) => kbase.getNode(nodeID)!)
+        .toList();
+
+    for (var edge in kbase.findRelatedEdges(nodes)) {
+      final from = kbaseview.nodeLayout[edge.from]!;
+      final to = kbaseview.nodeLayout[edge.to]!;
+
+      path.moveTo(from.dx, from.dy);
+      path.lineTo(to.dx, to.dy);
+    }
+
+    canvas.drawPath(
+      path,
+      Paint()
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = 1
+        ..color = Colors.black,
+    );
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
+    return false;
   }
 }

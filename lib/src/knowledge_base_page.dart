@@ -19,8 +19,12 @@ class KnowledgeBasePage extends StatefulWidget {
 class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
   KnowledgeBase? kb;
   var kv = KnowledgeBaseView(nodeLayout: {
-    "NVPA1I": Offset(100, 100), // - Living Things
-    "KR3P4M": Offset(100, 200), // - Animal
+    "NVPA1I": Offset(100, 200), // - Living Things
+    "KR3P4M": Offset(400, 100), // - Animal
+    "D2PDWS": Offset(700, 100),
+    "QX3XWG": Offset(700, 200),
+    "M8GGP8": Offset(400, 300),
+    "8FGBF9": Offset(700, 300),
   });
 
   @override
@@ -100,7 +104,7 @@ class KnowledgeBase {
       edges[edge['id']] = Edge(
         id: edge['id'],
         from: edge['from'],
-        to: edge['from'],
+        to: edge['to'],
         type: edge['type'],
       );
     }
