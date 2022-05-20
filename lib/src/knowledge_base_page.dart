@@ -18,6 +18,10 @@ class KnowledgeBasePage extends StatefulWidget {
 
 class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
   KnowledgeBase? kb;
+  var kv = KnowledgeBaseView(nodeLayout: {
+    "NVPA1I": Offset(100, 100), // - Living Things
+    "KR3P4M": Offset(100, 200), // - Animal
+  });
 
   @override
   void initState() {
@@ -51,10 +55,16 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
           if (kb != null)
             GraphView(
               kbase: kb!,
-              kbaseview: KnowledgeBaseView(nodeLayout: {
-                "NVPA1I": Offset(100, 100), // - Living Things
-                "KR3P4M": Offset(100, 200), // - Animal
-              }),
+              kbaseview: kv,
+              onNodeDragUpdate: (nodeID, details) {
+                setState(() {
+                  final original = kv.nodeLayout[nodeID]!;
+                  kv.nodeLayout[nodeID] = Offset(
+                    original.dx + details.delta.dx,
+                    original.dy + details.delta.dy,
+                  );
+                });
+              },
             ),
         ],
       ),
