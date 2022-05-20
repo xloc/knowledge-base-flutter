@@ -1,16 +1,19 @@
-# knowledge_base_flutter
+# Knowledge Base
 
-A new Flutter project.
+# FIXIT
 
-## Getting Started
+* efficient node size aquisition
+    * currently keep updating
+* start frame not centered
+    * also related to size aquisition
+* CustomerPainter shouldReprint
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+# TODO
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+* arrow triangle
+* edge type lable
+* node/edge add/delete/update
+* better curved edge
+* database & backend
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
