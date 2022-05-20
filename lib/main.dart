@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart';
-import 'package:knowledge_base_flutter/src/KnowledgeBasePage.dart';
+import 'package:knowledge_base_flutter/src/knowledge_base_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: Scaffold(
+        home: const Scaffold(
           body: KnowledgeBasePage(),
         ));
   }
