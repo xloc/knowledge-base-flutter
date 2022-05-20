@@ -17,26 +17,37 @@ class GraphNodeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: kbaseview.nodeLayout.entries.map((e) {
-        return Positioned(
-          left: e.value.dx,
-          top: e.value.dy,
-          child: Draggable(
-            onDragUpdate: ((details) {
-              if (onNodeDragUpdate != null) onNodeDragUpdate!(e.key, details);
-            }),
-            feedback: Container(),
-            child: Container(
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                border: Border.all(),
-                borderRadius: BorderRadius.circular(10),
-                color: Colors.white,
+        return Builder(
+          builder: (context) {
+            double sx = 0, sy = 0;
+            if (context.findRenderObject() != null) {
+              final box = context.findRenderObject() as RenderBox;
+              sx = box.size.width;
+              sy = box.size.height;
+            }
+            return Positioned(
+              left: e.value.dx - sx / 2,
+              top: e.value.dy - sy / 2,
+              child: Draggable(
+                onDragUpdate: ((details) {
+                  if (onNodeDragUpdate != null)
+                    onNodeDragUpdate!(e.key, details);
+                }),
+                feedback: Container(),
+                child: Container(
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    border: Border.all(),
+                    borderRadius: BorderRadius.circular(10),
+                    color: Colors.white,
+                  ),
+                  child: Padding(
+                      padding: EdgeInsets.all(10),
+                      child: Text(kbase.getNode(e.key)!.title)),
+                ),
               ),
-              child: Padding(
-                  padding: EdgeInsets.all(10),
-                  child: Text(kbase.getNode(e.key)!.title)),
-            ),
-          ),
+            );
+          },
         );
       }).toList(),
     );
