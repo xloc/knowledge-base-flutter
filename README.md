@@ -1,6 +1,6 @@
 # Knowledge Base
 
-# FIXIT
+## FIXIT
 
 * efficient node size aquisition
     * currently keep updating
@@ -9,7 +9,7 @@
 * CustomerPainter shouldReprint
 
 
-# TODO
+## TODO
 
 * arrow triangle
 * edge type lable
@@ -17,3 +17,5 @@
 * better curved edge
 * database & backend
 
+## current snapshot
+![](mdres/20220520.gif)
