@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:knowledge_base_flutter/src/graph_node_view.dart';
 import 'package:knowledge_base_flutter/src/knowledge_base_page.dart';
+import 'package:knowledge_base_flutter/src/models.dart';
 
 class GraphView extends StatelessWidget {
   final KnowledgeBase kbase;

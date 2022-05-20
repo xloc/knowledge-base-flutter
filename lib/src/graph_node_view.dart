@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:knowledge_base_flutter/src/knowledge_base_page.dart';
+import 'package:knowledge_base_flutter/src/models.dart';
 
 class GraphNodeView extends StatelessWidget {
   final void Function(String nodeID, DragUpdateDetails)? onNodeDragUpdate;
