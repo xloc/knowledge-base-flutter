@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:knowledge_base_flutter/src/knowledge_base_page.dart';
 import 'package:knowledge_base_flutter/src/models.dart';
 
 class GraphNodeView extends StatelessWidget {
@@ -25,6 +24,7 @@ class GraphNodeView extends StatelessWidget {
               final box = context.findRenderObject() as RenderBox;
               sx = box.size.width;
               sy = box.size.height;
+              kbaseview.nodeLayout[e.key]!.size = box.size;
             }
             return Positioned(
               left: e.value.offset.dx - sx / 2,

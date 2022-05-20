@@ -2,7 +2,6 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:knowledge_base_flutter/src/graph_node_view.dart';
-import 'package:knowledge_base_flutter/src/knowledge_base_page.dart';
 import 'package:knowledge_base_flutter/src/models.dart';
 
 class GraphView extends StatelessWidget {
@@ -53,11 +52,33 @@ class ArrowPainter extends CustomPainter {
         .toList();
 
     for (var edge in kbase.findRelatedEdges(nodes)) {
-      final from = kbaseview.nodeLayout[edge.from]!.offset;
-      final to = kbaseview.nodeLayout[edge.to]!.offset;
+      final from = kbaseview.nodeLayout[edge.from]!;
+      final to = kbaseview.nodeLayout[edge.to]!;
 
-      path.moveTo(from.dx, from.dy);
-      path.lineTo(to.dx, to.dy);
+      var x1 = from.offset.dx;
+      var y1 = from.offset.dy;
+      var x2 = to.offset.dx;
+      var y2 = to.offset.dy;
+      if ((x1 - x2).abs() > (y1 - y2).abs()) {
+        if (x1 > x2) {
+          x1 -= from.size.width / 2;
+          x2 += to.size.width / 2;
+        } else {
+          x1 += from.size.width / 2;
+          x2 -= to.size.width / 2;
+        }
+      } else {
+        if (y1 > y2) {
+          y1 -= from.size.height / 2;
+          y2 += to.size.height / 2;
+        } else {
+          y1 += from.size.height / 2;
+          y2 -= to.size.height / 2;
+        }
+      }
+
+      path.moveTo(x1, y1);
+      path.lineTo(x2, y2);
     }
 
     canvas.drawPath(
