@@ -1,12 +1,7 @@
-import 'dart:collection';
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart';
 import 'package:knowledge_base_flutter/src/graph_view.dart';
 import 'package:knowledge_base_flutter/src/models.dart';
-import 'package:yaml/yaml.dart';
 
 class KnowledgeBasePage extends StatefulWidget {
   const KnowledgeBasePage({
@@ -20,12 +15,12 @@ class KnowledgeBasePage extends StatefulWidget {
 class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
   KnowledgeBase? kb;
   var kv = KnowledgeBaseView(nodeLayout: {
-    "NVPA1I": NodeLayoutInfo(offset: Offset(100, 200)), // - Living Things
-    "KR3P4M": NodeLayoutInfo(offset: Offset(400, 100)), // - Animal
-    "D2PDWS": NodeLayoutInfo(offset: Offset(700, 100)),
-    "QX3XWG": NodeLayoutInfo(offset: Offset(700, 200)),
-    "M8GGP8": NodeLayoutInfo(offset: Offset(400, 300)),
-    "8FGBF9": NodeLayoutInfo(offset: Offset(700, 300)),
+    "NVPA1I": NodeLayoutInfo(offset: const Offset(100, 200)), // - Living Things
+    "KR3P4M": NodeLayoutInfo(offset: const Offset(400, 100)), // - Animal
+    "D2PDWS": NodeLayoutInfo(offset: const Offset(700, 100)),
+    "QX3XWG": NodeLayoutInfo(offset: const Offset(700, 200)),
+    "M8GGP8": NodeLayoutInfo(offset: const Offset(400, 300)),
+    "8FGBF9": NodeLayoutInfo(offset: const Offset(700, 300)),
   });
 
   @override
@@ -36,12 +31,6 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
         kb = value;
       });
     });
-
-    // KnowledgeBaseStorage().read().then((value) {
-    //   setState(() {
-    //     doc = value;
-    //   });
-    // });
   }
 
   @override
@@ -56,7 +45,6 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
       ),
       child: Stack(
         children: [
-          Center(),
           if (kb != null)
             GraphView(
               kbase: kb!,
