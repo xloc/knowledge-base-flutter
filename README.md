@@ -4,7 +4,7 @@
 
 * efficient node size aquisition
     * currently keep updating
-* start frame not centered
+* start frame node flashing
     * also related to size aquisition
 * CustomerPainter shouldReprint
 
