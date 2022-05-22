@@ -53,8 +53,8 @@ class _PositionedNodeState extends State<PositionedNode> {
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      left: widget.layout.offset.dx - widget.layout.size.width / 2,
-      top: widget.layout.offset.dy - widget.layout.size.height / 2,
+      left: widget.layout.offset.dx,
+      top: widget.layout.offset.dy,
       child: Draggable(
         onDragUpdate: ((details) {
           if (widget.onNodeDragUpdate != null) {

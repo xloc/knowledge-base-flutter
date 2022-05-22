@@ -79,6 +79,11 @@ class ArrowPainter extends CustomPainter {
         }
       }
 
+      x1 += from.size.width / 2;
+      y1 += from.size.height / 2;
+      x2 += to.size.width / 2;
+      y2 += to.size.height / 2;
+
       rod_path.moveTo(x1, y1);
       rod_path.lineTo(x2, y2);
 
