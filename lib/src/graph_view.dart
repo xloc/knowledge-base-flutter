@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:knowledge_base_flutter/src/graph_node_view.dart';
@@ -46,7 +47,8 @@ class ArrowPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    final path = Path();
+    final rod_path = Path();
+    final arrow_path = Path();
     final nodes = kbaseview.nodeLayout.keys
         .map((nodeID) => kbase.getNode(nodeID)!)
         .toList();
@@ -77,14 +79,31 @@ class ArrowPainter extends CustomPainter {
         }
       }
 
-      path.moveTo(x1, y1);
-      path.lineTo(x2, y2);
+      rod_path.moveTo(x1, y1);
+      rod_path.lineTo(x2, y2);
+
+      final rod_angle = atan2(y1 - y2, x1 - x2);
+      final arrow_angle = pi / 4;
+      arrow_path.addPolygon([
+        Offset(x2, y2),
+        Offset(x2, y2) + Offset.fromDirection(rod_angle + arrow_angle / 2, 10),
+        Offset(x2, y2) + Offset.fromDirection(rod_angle - arrow_angle / 2, 10),
+      ], true);
     }
 
     canvas.drawPath(
-      path,
+      rod_path,
       Paint()
         ..style = PaintingStyle.stroke
+        ..strokeWidth = 1
+        ..color = Colors.black
+        ..isAntiAlias = true,
+    );
+
+    canvas.drawPath(
+      arrow_path,
+      Paint()
+        ..style = PaintingStyle.fill
         ..strokeWidth = 1
         ..color = Colors.black,
     );
