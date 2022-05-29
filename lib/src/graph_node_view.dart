@@ -93,9 +93,17 @@ class _NodeViewState extends State<NodeView> {
     return Container(
       key: widgetKey,
       decoration: BoxDecoration(
-        border: Border.all(),
+        border: Border.all(color: Colors.black26),
         borderRadius: BorderRadius.circular(10),
         color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.4),
+            spreadRadius: 1,
+            blurRadius: 3,
+            offset: const Offset(0, 0), // changes position of shadow
+          ),
+        ],
       ),
       child: Padding(
         padding: EdgeInsets.all(10),

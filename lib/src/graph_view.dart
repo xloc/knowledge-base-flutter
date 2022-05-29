@@ -87,12 +87,12 @@ class ArrowPainter extends CustomPainter {
       rod_path.moveTo(x1, y1);
       rod_path.lineTo(x2, y2);
 
-      final rod_angle = atan2(y1 - y2, x1 - x2);
-      final arrow_angle = pi / 4;
+      final rodAngle = atan2(y1 - y2, x1 - x2);
+      const arrowAngle = pi / 6;
       arrow_path.addPolygon([
         Offset(x2, y2),
-        Offset(x2, y2) + Offset.fromDirection(rod_angle + arrow_angle / 2, 10),
-        Offset(x2, y2) + Offset.fromDirection(rod_angle - arrow_angle / 2, 10),
+        Offset(x2, y2) + Offset.fromDirection(rodAngle + arrowAngle / 2, 10),
+        Offset(x2, y2) + Offset.fromDirection(rodAngle - arrowAngle / 2, 10),
       ], true);
     }
 
@@ -101,7 +101,7 @@ class ArrowPainter extends CustomPainter {
       Paint()
         ..style = PaintingStyle.stroke
         ..strokeWidth = 1
-        ..color = Colors.black
+        ..color = Colors.black54
         ..isAntiAlias = true,
     );
 
