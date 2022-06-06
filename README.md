@@ -11,9 +11,13 @@
 
 ## TODO
 
-* arrow triangle
 * edge type lable
 * node/edge add/delete/update
+  * wild edge/node statistics
+  * edit history (Memo)
+* node/edge query/bfs?
+* node keyword attribute? duplicate category.has?
+* how to handle time/history of a entity?
 * better curved edge
 * database & backend
 
