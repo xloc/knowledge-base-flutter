@@ -59,6 +59,18 @@ class _KnowledgeBasePageState extends State<KnowledgeBasePage> {
                 });
               },
             ),
+          Row(
+            children: [
+              Padding(
+                child: ElevatedButton(onPressed: () {}, child: Text("Load")),
+                padding: const EdgeInsets.all(10),
+              ),
+              Padding(
+                child: ElevatedButton(onPressed: () {}, child: Text("Save")),
+                padding: const EdgeInsets.all(10),
+              ),
+            ],
+          )
         ],
       ),
     );
